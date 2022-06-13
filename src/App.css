@@ -9,6 +9,7 @@ header {
   display: flex;
   border-bottom: solid 1px grey;
   align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
@@ -22,9 +23,13 @@ header h2 {
 }
 
 nav {
-  margin-left: 50%;
   color: #00f;
+  margin-right: 5%;
 }
+
+nav .active{
+    text-decoration: underline;
+  }
 
 .menu-item1 {
   text-decoration: none;
@@ -40,4 +45,8 @@ nav {
   margin-left: 1rem;
   padding-left: 1rem;
   border-left: solid 1px;
+}
+
+.title {
+    display: flex;
 }
