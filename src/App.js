@@ -7,15 +7,15 @@ import Profile from './components/Profile';
 
 function App() {
   return (
-    <section className='container'>
+    <section className="container">
       <Navbar />
       <Routes>
-        <Route path='/rockets' element={<Rockets />} />
-        <Route path='/missions' element={<Missions />} />
-        <Route path='/' element={<Profile />} />
+        <Route path="/rockets" element={<Rockets />} />
+        <Route path="/missions" element={<Missions />} />
+        <Route path="/" element={<Profile />} />
       </Routes>
     </section>
-  )
+  );
 }
 
-export default App
+export default App;
