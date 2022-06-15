@@ -9,6 +9,11 @@ header {
   display: flex;
   border-bottom: solid 1px grey;
   align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  display: flex;
 }
 
 .logo {
@@ -22,8 +27,12 @@ header h2 {
 }
 
 nav {
-  margin-left: 50%;
   color: #00f;
+  margin-right: 5%;
+}
+
+nav .active {
+  text-decoration: underline;
 }
 
 .menu-item1 {
@@ -40,4 +49,43 @@ nav {
   margin-left: 1rem;
   padding-left: 1rem;
   border-left: solid 1px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.missions-table {
+  width: 95%;
+  margin-left: 2%;
+  margin-top: 4%;
+}
+
+.mission-title {
+  width: 15%;
+}
+
+.mission-descritption {
+  width: 60%;
+}
+
+.bg-variant {
+  background-color: black;
+}
+
+.mission-status {
+  width: 15%;
+}
+
+.join-btn {
+  margin-left: 10%;
+  width: 80%;
+}
+
+.membership-btn {
+  margin-left: 10%;
+  width: 80%;
 }
