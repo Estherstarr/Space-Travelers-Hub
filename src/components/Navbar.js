@@ -10,9 +10,9 @@ function Navbar() {
         <h2>Space Traveler&apos;s Hub</h2>
       </div>
       <nav>
-        <NavLink to="/rockets" className="menu-item1">Rockets</NavLink>
+        <NavLink to="/" className="menu-item1">Rockets</NavLink>
         <NavLink to="/missions" className="menu-item2">Missions</NavLink>
-        <NavLink to="/" className="menu-item3">My profile</NavLink>
+        <NavLink to="/myprofile" className="menu-item3">My profile</NavLink>
       </nav>
     </header>
   );
