@@ -31,9 +31,9 @@ nav {
   margin-right: 5%;
 }
 
-nav .active{
-    text-decoration: underline;
-  }
+nav .active {
+  text-decoration: underline;
+}
 
 .menu-item1 {
   text-decoration: none;
@@ -51,7 +51,9 @@ nav .active{
   border-left: solid 1px;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
 }
@@ -64,7 +66,6 @@ table, th, td {
 
 .mission-title {
   width: 15%;
-  
 }
 
 .mission-descritption {
@@ -74,6 +75,7 @@ table, th, td {
 .bg-variant {
   background-color: black;
 }
+
 .mission-status {
   width: 15%;
 }
