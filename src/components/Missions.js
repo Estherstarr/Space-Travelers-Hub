@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, connect } from 'react-redux';
+import PropTypes from 'prop-types'
 import { getMissions } from '../redux/missions/missions';
 // import axios from 'axios';
 
@@ -11,6 +12,7 @@ function Missions({ getInfo }) {
   useEffect(() => {
     getInfo();
   }, []);
+  
   const displayID = () => {
     // console.log( e.target.id);
   };
@@ -43,6 +45,15 @@ function Missions({ getInfo }) {
 }
 
 const dispatchToProps = (dispatch) => ({ getInfo: () => dispatch(getMissions()) });
+Missions.propTypes = {
+  getInfo: PropTypes.func,
+}
+
+Missions.defaultDefault = {
+  getInfo: '',
+}
+
 export default connect(null, dispatchToProps)(Missions);
+
 
 // export default Missions;
