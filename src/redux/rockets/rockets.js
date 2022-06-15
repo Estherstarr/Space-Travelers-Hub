@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const GET_ROCKET = 'GET_ROCKET';
+const GET_ROCKET = 'spaceTravellerHub/rockets/GET_ROCKET';
 
 export const getRocket = (payload) => ({ type: GET_ROCKET, payload });
 
