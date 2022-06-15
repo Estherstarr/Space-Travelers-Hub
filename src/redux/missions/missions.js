@@ -1,26 +1,19 @@
 import axios from 'axios';
 
-const FETCH_MISSIONS = 'bookstore/src/redux/books/FETCH_MISSIONS';
-const LAND_SURVEY = 'bookstore/src/redux/books/LAND_SURVEY';
+const FETCH_MISSIONS = 'Space-Travelers-Hub/src/redux/missions/FETCH_MISSIONS';
 
 const URL = 'https://api.spacexdata.com/v3/missions';
 
-const init = {
-  name: 'hector', idea: 'remberence', field: 'air conditioning', status: 'research',
-};
+const init = {};
 
-// const joinMission = <button></button>
+// const leaveMission = <button >Leave mission</button>;
+// const joinMission = <button className="join-btn">join Mission</button>;
 
 export default function missionReducer(state = [init], action) {
   switch (action.type) {
     case FETCH_MISSIONS: {
       return action.payload;
     }
-
-    case LAND_SURVEY:
-      return {
-        name: 'hector', idea: 'rememberence', field: 'air conditioning', status: 'research',
-      };
     default:
       return state;
   }
