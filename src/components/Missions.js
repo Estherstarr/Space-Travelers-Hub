@@ -1,48 +1,55 @@
-import React from 'react';
-import ReactTable from "react-table";
-import "react-table/react-table.css";
+import React, { useState, useEffect } from 'react';
+import { useSelector, connect } from 'react-redux';
+import { getMissions } from '../redux/missions/missions';
+// import axios from 'axios';
 
-const missionsAPI = 'https://api.spacexdata.com/v3/missions';
-fetch(missionsAPI).then((res) => res.json()).then((r) => console.log(r));
+// const missionsAPI = 'https://api.spacexdata.com/v3/missions';
+// axios.get(missionsAPI).then((res) => res.data).then((r) => console.log(r));
 
-function Missions() {
-  const data = [{
-    name: 'Ayaan',
-    age: 26
-  }, {
-    name: 'Ahana',
-    age: 22
-  }, {
-    name: 'Peter',
-    age: 40
-  }, {
-    name: 'Virat',
-    age: 30
-  }, {
-    name: 'Rohit',
-    age: 32
-  }, {
-    name: 'Dhoni',
-    age: 37
-  }];
-  const columns = [{
-    Header: 'Name',
-    accessor: 'name'
-  }, {
-    Header: 'Age',
-    accessor: 'age'
-  }]
+function Missions({ getInfo }) {
+  const data = useSelector((state) => state.missionReducer);
+  useEffect(() => {
+    getInfo();
+  }, []);
 
   return (
-  
-      <ReactTable
-        data={data}
-        columns={columns}
-        defaultPageSize={2}
-        pageSizeOptions={[2, 4, 6]}
-      />
-    
+    <table className="missions-table">
+      <thead>
+        <tr>
+          <th className="mission-title">Mission</th>
+          <th className="mission-description">Description</th>
+          <th className="mission-status">status</th>
+          <th className="mission-status" />
+        </tr>
+      </thead>
+      <tbody>
+        {
+      data.map((row) => (
+        <tr>
+          <td>{row.mission_name}</td>
+          <td>{row.description}</td>
+          <td><button className="membership-btn">NOT A MEMBER</button></td>
+          <td><button className="join-btn">join Mission</button></td>
+        </tr>
+      ))
+
+    }
+      </tbody>
+      {/* {
+        const rows = document.querySelectorAll('tr')
+        rows.forEach(row => {
+          if (rows.indexOf(row) % 2 !== 0) {
+            row.classList.add('bg-variant')
+            console.log(row)
+
+          } })
+
+      } */}
+    </table>
   );
 }
 
-export default Missions;
+const dispatchToProps = (dispatch) => ({ getInfo: () => dispatch(getMissions()) });
+export default connect(null, dispatchToProps)(Missions);
+
+// export default Missions;
