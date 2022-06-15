@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, connect } from 'react-redux';
 import { getMissions } from '../redux/missions/missions';
 // import axios from 'axios';
@@ -11,7 +11,9 @@ function Missions({ getInfo }) {
   useEffect(() => {
     getInfo();
   }, []);
-
+  const displayID = () => {
+    // console.log( e.target.id);
+  };
   return (
     <table className="missions-table">
       <thead>
@@ -19,32 +21,23 @@ function Missions({ getInfo }) {
           <th className="mission-title">Mission</th>
           <th className="mission-description">Description</th>
           <th className="mission-status">status</th>
-          <th className="mission-status" />
+          <th className="mission-status"> </th>
         </tr>
       </thead>
       <tbody>
         {
-      data.map((row) => (
-        <tr>
-          <td>{row.mission_name}</td>
-          <td>{row.description}</td>
-          <td><button className="membership-btn">NOT A MEMBER</button></td>
-          <td><button className="join-btn">join Mission</button></td>
-        </tr>
-      ))
+          data.map((row) => (
+            <tr key={row.mission_id}>
+              <td>{row.mission_name}</td>
+              <td>{row.description}</td>
+              <td><button type="button" className="membership-btn">NOT A MEMBER</button></td>
+              <td><button type="button" id={row.mission_name} onClick={displayID} className="join-btn">join Mission</button></td>
+            </tr>
+          ))
 
-    }
+        }
       </tbody>
-      {/* {
-        const rows = document.querySelectorAll('tr')
-        rows.forEach(row => {
-          if (rows.indexOf(row) % 2 !== 0) {
-            row.classList.add('bg-variant')
-            console.log(row)
 
-          } })
-
-      } */}
     </table>
   );
 }

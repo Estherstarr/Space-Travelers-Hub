@@ -79,5 +79,11 @@ table, th, td {
 }
 
 .join-btn {
-  margin-left: 30%;
+  margin-left: 10%;
+  width: 80%;
+}
+
+.membership-btn {
+  margin-left: 10%;
+  width: 80%;
 }
