@@ -9,7 +9,10 @@ function Rocket({
       <img src={flickrImages} alt="rocket" className="imgContainer" />
       <div className="displayInfo">
         <h1 className="headerText">{name}</h1>
-        <p className="descriptionTxt">{description}</p>
+        <p className="descriptionTxt">
+          {reserved && <span>Reserved</span>}
+          {description}
+        </p>
         {!reserved && (
           <button
             type="button"
@@ -22,7 +25,7 @@ function Rocket({
         {reserved && (
           <button
             type="button"
-            className="buttonStyle"
+            className="cancelButton"
             onClick={reservedRocket}
           >
             Cancel Reservation
@@ -38,13 +41,14 @@ Rocket.propTypes = {
   description: PropTypes.string,
   flickrImages: PropTypes.string,
   reserved: PropTypes.bool,
-  reservedRocket: PropTypes.func.isRequired,
+  reservedRocket: PropTypes.func,
 };
 
 Rocket.defaultProps = {
   name: '',
   description: '',
   flickrImages: '',
-  reserved: '',
+  reserved: false,
+  reservedRocket: null,
 };
 export default Rocket;
