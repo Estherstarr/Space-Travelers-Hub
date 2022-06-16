@@ -1,11 +1,11 @@
 .rocketContainer {
   display: flex;
   padding: 20px;
-  gap:30px;
+  gap: 30px;
 }
 
 button {
-  background: #047bfe ;
+  background: #047bfe;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -15,6 +15,4 @@ button {
 .imgContainer {
   height: 200px;
   width: 300px;
-
 }
-
