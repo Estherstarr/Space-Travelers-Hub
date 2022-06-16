@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rocketReducer from './rockets/rockets';
-import missionReducer, { getMissions } from './missions/missions';
+import missionReducer from './missions/missions';
 
 const allReducers = combineReducers({
   rocketList: rocketReducer,
