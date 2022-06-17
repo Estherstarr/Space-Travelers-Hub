@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import Navbar from './components/Navbar';
 import Rockets from './components/Rockets';
 import Missions from './components/Missions';
-import Profile from './components/Profile';
+import Profile from './components/Profiles';
 import { fetchRocket } from './redux/rockets/rockets';
 
 function App() {

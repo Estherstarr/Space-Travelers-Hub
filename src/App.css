@@ -94,3 +94,20 @@ td {
   margin-left: 10%;
   width: 80%;
 }
+
+.side_card {
+  width: 40%;
+}
+
+.profileTable {
+  width: 100% !important;
+}
+
+.profileTable tr {
+  border: 1px solid #545454;
+}
+
+.profileTable td {
+  font-size: 14px;
+  padding: 10px 20px;
+}
