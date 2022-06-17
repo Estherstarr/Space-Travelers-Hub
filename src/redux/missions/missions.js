@@ -1,29 +1,44 @@
 import axios from 'axios';
 
-const FETCH_MISSIONS = 'Space-Travelers-Hub/src/redux/missions/FETCH_MISSIONS';
+const GET_MISSION = 'GET_MISSION';
+const JOIN_MISSION = 'JOIN_MISSION';
 
-const URL = 'https://api.spacexdata.com/v3/missions';
+export const getMissions = (payload) => ({ type: GET_MISSION, payload });
+export const joinMission = (id) => ({ type: JOIN_MISSION, id });
 
-const init = {};
+const url = 'https://api.spacexdata.com/v3/missions';
 
-// const leaveMission = <button >Leave mission</button>;
-// const joinMission = <button className="join-btn">join Mission</button>;
-
-export default function missionReducer(state = [init], action) {
-  switch (action.type) {
-    case FETCH_MISSIONS: {
-      return action.payload;
-    }
-    default:
-      return state;
-  }
-}
-
-export const displayMissions = (payload) => ({ type: FETCH_MISSIONS, payload });
-
-export const getMissions = () => (dispatch) => {
-  axios.get(URL).then((response) => {
-    const { data } = response;
-    dispatch({ type: FETCH_MISSIONS, payload: data });
+export const fetchMissions = () => async (dispatch) => {
+  const response = await axios.get(url);
+  const data = await response.data;
+  const missions = [];
+  data.forEach((mission) => {
+    missions.push({
+      id: mission.mission_id,
+      name: mission.mission_name,
+      description: mission.description,
+      reserved: false,
+    });
   });
+  dispatch(getMissions(missions));
 };
+
+const missionReducer = (state = [], action) => {
+  if (action.type === GET_MISSION) {
+    return action.payload;
+  }
+
+  if (action.type === JOIN_MISSION) {
+    const newState = state.map((mission) => {
+      if (mission.id !== action.id) {
+        return mission;
+      }
+      return { ...mission, reserved: !mission.reserved };
+    });
+    return newState;
+  }
+
+  return state;
+};
+
+export default missionReducer;
