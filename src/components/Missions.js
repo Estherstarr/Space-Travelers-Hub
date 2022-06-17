@@ -1,21 +1,27 @@
-import React, { useEffect } from 'react';
-import { useSelector, connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { getMissions } from '../redux/missions/missions';
-// import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { joinMission, fetchMissions } from '../redux/missions/missions';
 
-// const missionsAPI = 'https://api.spacexdata.com/v3/missions';
-// axios.get(missionsAPI).then((res) => res.data).then((r) => console.log(r));
+const bgVariant = {
+  backgroundColor: '#D3D3D3',
+};
 
-function Missions({ getInfo }) {
-  const data = useSelector((state) => state.missionReducer);
+const bgWhite = {
+  backgroundColor: '#fff',
+};
+
+const Missions = () => {
+  const missions = useSelector((state) => state.missions);
+
+  const dispatch = useDispatch();
+  const handleJoinMission = (id) => {
+    dispatch(joinMission(id));
+  };
+
   useEffect(() => {
-    getInfo();
+    dispatch(fetchMissions());
   }, []);
 
-  const displayID = () => {
-    // console.log( e.target.id);
-  };
   return (
     <table className="missions-table">
       <thead>
@@ -27,33 +33,46 @@ function Missions({ getInfo }) {
         </tr>
       </thead>
       <tbody>
-        {
-          data.map((row) => (
-            <tr key={row.mission_id}>
-              <td>{row.mission_name}</td>
-              <td>{row.description}</td>
-              <td><button type="button" className="membership-btn">NOT A MEMBER</button></td>
-              <td><button type="button" id={row.mission_name} onClick={displayID} className="join-btn">join Mission</button></td>
-            </tr>
-          ))
-
-        }
+        {missions.map((mission) => (
+          <tr
+            key={mission.mission_id}
+            style={missions.indexOf(mission) % 2 === 0 ? bgVariant : bgWhite}
+          >
+            <td>{mission.name}</td>
+            <td>{mission.description}</td>
+            <td>
+              <p className="membership-btn">
+                {!mission.reserved && 'NOT A MEMBER'}
+                {mission.reserved && 'ACTIVE MEMBER'}
+              </p>
+            </td>
+            <td>
+              {!mission.reserved && (
+              <button
+                type="button"
+                onClick={() => {
+                  handleJoinMission(mission.id);
+                }}
+                className="join-btn"
+              >
+                join mission
+              </button>
+              )}
+              {mission.reserved && (
+              <button
+                type="button"
+                onClick={() => { handleJoinMission(mission.id); }}
+                className="join-btn"
+              >
+                leave mission
+              </button>
+              )}
+            </td>
+          </tr>
+        ))}
       </tbody>
-
     </table>
   );
-}
-
-const dispatchToProps = (dispatch) => ({ getInfo: () => dispatch(getMissions()) });
-
-Missions.propTypes = {
-  getInfo: PropTypes.func,
 };
 
-Missions.defaultProps = {
-  getInfo: '',
-};
-
-export default connect(null, dispatchToProps)(Missions);
-
-// export default Missions;
+export default Missions;

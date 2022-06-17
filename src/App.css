@@ -44,6 +44,11 @@ nav .active {
   margin-left: 1rem;
 }
 
+.bg {
+  background-color: white;
+  height: 10rem;
+}
+
 .menu-item3 {
   text-decoration: none;
   margin-left: 1rem;
@@ -88,4 +93,27 @@ td {
 .membership-btn {
   margin-left: 10%;
   width: 80%;
+}
+
+.side_card {
+  width: 40%;
+}
+
+.profileTable {
+  width: 100% !important;
+}
+
+.profileTable tr {
+  border: 1px solid #545454;
+}
+
+.profileTable td {
+  font-size: 14px;
+  padding: 10px 20px;
+}
+
+.my_profil {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
 }
