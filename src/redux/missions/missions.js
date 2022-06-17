@@ -25,7 +25,10 @@ export const fetchMissions = () => async (dispatch) => {
 
 const missionReducer = (state = [], action) => {
   if (action.type === GET_MISSION) {
-    return action.payload;
+    if (state.length === 0) {
+      return action.payload;
+    }
+    return state;
   }
 
   if (action.type === JOIN_MISSION) {
