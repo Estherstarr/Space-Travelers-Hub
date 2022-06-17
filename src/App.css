@@ -44,6 +44,11 @@ nav .active {
   margin-left: 1rem;
 }
 
+.bg {
+  background-color: white;
+  height: 10rem;
+}
+
 .menu-item3 {
   text-decoration: none;
   margin-left: 1rem;
