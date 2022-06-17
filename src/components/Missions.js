@@ -45,6 +45,7 @@ function Missions({ getInfo }) {
 }
 
 const dispatchToProps = (dispatch) => ({ getInfo: () => dispatch(getMissions()) });
+
 Missions.propTypes = {
   getInfo: PropTypes.func,
 };

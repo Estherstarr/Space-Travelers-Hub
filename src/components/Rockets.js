@@ -1,16 +1,14 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRocket } from '../redux/rockets/rockets';
+import { reserveRocket } from '../redux/rockets/rockets';
 import Rocket from './rocket';
 
 const Rockets = () => {
   const rockets = useSelector((state) => state.rocketList);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchRocket());
-  }, []);
+  const handleReservedRocket = (id) => {
+    dispatch(reserveRocket(id));
+  };
 
   return (
     <div>
@@ -20,6 +18,8 @@ const Rockets = () => {
           name={rocket.name}
           description={rocket.description}
           flickrImages={rocket.flickr_images}
+          reserved={rocket.reserved}
+          reservedRocket={() => handleReservedRocket(rocket.id)}
         />
       ))}
     </div>
