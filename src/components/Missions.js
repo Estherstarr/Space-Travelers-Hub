@@ -41,10 +41,10 @@ const Missions = () => {
             <td>{mission.name}</td>
             <td>{mission.description}</td>
             <td>
-              <button type="button" className="membership-btn">
+              <p className="membership-btn">
                 {!mission.reserved && 'NOT A MEMBER'}
                 {mission.reserved && 'ACTIVE MEMBER'}
-              </button>
+              </p>
             </td>
             <td>
               {!mission.reserved && (
