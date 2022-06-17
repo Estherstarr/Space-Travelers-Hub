@@ -5,7 +5,7 @@ import missionReducer from './missions/missions';
 
 const allReducers = combineReducers({
   rocketList: rocketReducer,
-   missions: missionReducer,
+  missions: missionReducer,
 
 });
 

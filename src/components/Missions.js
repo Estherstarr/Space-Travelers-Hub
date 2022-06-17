@@ -73,6 +73,6 @@ const Missions = () => {
       </tbody>
     </table>
   );
-}
+};
 
 export default Missions;
