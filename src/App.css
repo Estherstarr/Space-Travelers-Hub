@@ -111,3 +111,9 @@ td {
   font-size: 14px;
   padding: 10px 20px;
 }
+
+.my_profil {
+  display: flex;
+  justify-content: center;
+  gap:40px;
+}
